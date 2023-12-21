@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Demo Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Students Project Registration</h1>
+        <form id="registrationForm">
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="studentID">Student ID (8 digits):</label>
+            <input type="text" id="studentid" name="studentid" pattern="[0-9]{8}" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone (e.g., 999-999-9999):</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+            <label for="projectTitle">Project Title:</label>
+            <input type="text" id="projectTitle" name="projectTitle" required>
+
+            <label for="timeSlot">Select Time Slot:</label>
+            <select id="timeSlot" name="timeSlot" required>
+                <option value="1">11/19/2023, 6:00 PM – 7:00 PM (6 seats remaining)</option>
+                <option value="2">11/19/2023, 6:00 PM – 7:00 PM (4 seats remaining)</option>
+                <option value="3">11/19/2023, 6:00 PM – 7:00 PM (3 seats remaining)</option>
+                <option value="4">11/19/2023, 6:00 PM – 7:00 PM (2 seats remaining)</option>
+                <option value="5">11/19/2023, 6:00 PM – 7:00 PM (4 seats remaining)</option>
+                <option value="6">11/19/2023, 6:00 PM – 7:00 PM (0 seats remaining)</option>
+            </select>
+
+            <button type="submit" onclick="submitForm()">Submit</button>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Students</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 10;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #studentList {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Registered Students</h1>
+
+        <table id="studentList">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Project Title</th>
+                    <th>Time Slot</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch registered students when the page loads
+            fetch('server/index.php')
+                .then(response => response.json())
+                .then(data => displayStudents(data))
+                .catch(error => console.error('Error fetching registered students:', error));
+
+            function displayStudents(students) {
+                const studentList = document.querySelector('#studentList tbody');
+
+                students.forEach(student => {
+                    const row = document.createElement('tr');
+
+                   const idCell = document.createElement('td');
+                    idCell.textContent = student.studentid;
+                   row.appendChild(idCell);
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = `${student.firstname} ${student.lastname}`;
+                    row.appendChild(nameCell);
+
+                    const emailCell = document.createElement('td');
+                    emailCell.textContent = student.email;
+                    row.appendChild(emailCell);
+
+                    const phoneCell = document.createElement('td');
+                    phoneCell.textContent = student.phone;
+                    row.appendChild(phoneCell);
+
+                    const projectTitleCell = document.createElement('td'); // Add project title cell
+                    projectTitleCell.textContent = student.projectTitle;
+                    row.appendChild(projectTitleCell);
+
+                    const timeSlotCell = document.createElement('td');
+                    timeSlotCell.textContent = student.timeSlot;
+                    row.appendChild(timeSlotCell);
+
+                    studentList.appendChild(row);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
