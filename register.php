@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $response['message'] = "Registration successful!";
                 
                 // Redirect to registered_students.html
-                header("Location:http://localhost/studentregisteration/registered_students.html");
+                header("Location:https://php-app-mu.vercel.app/registered_students.html");
                 exit();
             } else {
                 $response['success'] = false;
